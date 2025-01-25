@@ -24,7 +24,7 @@ To complete this tutorial you will need a few prerequisites:
 In these next few steps we will create our Rust project directory, initialize Git, and connect our local repository to a remote repository in GitHub!
 
 ### Creating our project directory and initializing Git 
-1. Open your terminal or command prompt and run the following commands:
+1. Open your local terminal or command prompt and run the following commands:
 ``` 
 mkdir hello-comp423
 cd hello-comp423
@@ -37,40 +37,37 @@ git init
     *What does this command do?* This initializes the current directory as an empty GitHub repository.
 3. Create a README file for the project by running: 
 ``` 
-echo "# My First Rust Project!" > README.md
+echo "# My first Rust Project" > README.md
+echo "Development container setup thanks to: (https://github.com/amspell04/comp423-course-notes)" >> README.md
 git add README.md
 git commit -m "Initial commit with README"
 ```
 
 ### Creating the remote repository in Github 
 
-1. Login to your [Github](https://github.com) Account and navigate to Create a New Repository page.
-2. Fill in the details for your repository as follows: 
+1. Login to your [Github](https://github.com) Account and 
+2. Navigate to your repository page and click **New**.
+3. Fill in the details for your repository as follows: 
     * **Repository Name:** hello-comp423
     * **Description:** "My very first Rust project!"
     * **Visibility:** Public
-3. Click Create Repository 
-4. Navigate back to the terminal running your project directory.
-5. Add the GitHub repository as a remote by runnng the following command: 
-``` 
-git remote add origin https://github.com/<your-username>/comp423-course-notes.git
-```
-    **Remember** replace "your-username" with your GitHub profile username.
-6. Do not initialize the repository with a README, .gitignore, or license.
-7. Click **Create Repository**
+4. Do not initialize the repository with a README, .gitignore, or license.
+5. Click **Create Repository**
+
 
 ### Linking your local repository to the remote
 
-1. Return to your terminal which has your project directory opened.
+1. Return to your local terminal/command prompt which has your project directory opened.
 2. Run the following command to add the GitHub repository as a remote:
 ``` 
-git remote add origin https://github.com/<your-username>/comp423-course-notes.git
+git remote add origin https://github.com/<your-username>/hello-comp423.git
 ```
+    **Remember** replace "your-username" with your GitHub profile username.
 3. Run the command below
 ``` 
 git branch
 ```
-If the branch is not named main, run the command below:
+If the branch is **not** named main, run the command below:
 ``` 
 git branch -M main
 ```
@@ -78,7 +75,7 @@ git branch -M main
 ``` 
 git push --set-upstream origin main
 ``` 
-5. Visit your remmote repository in Github and refresh the screen. You should now see that the commit made in step 3 of "Creating our project directory and initializing Git" is in your remote repository!
+5. Visit your remmote repository in Github and refresh the screen. You should now see that the commit made in step 4 of "Creating our project directory and initializing Git" is in your remote repository!
  
 
 Congrats! You just created your Rust project directory, initialized Git, and connect the local repository to the remote repository in GitHub!
@@ -86,8 +83,14 @@ Congrats! You just created your Rust project directory, initialized Git, and con
 
 ## **Creating a Development Container for our Project**
 1. Open the hello-comp423 directory in VSCode.
-2. Inside this folder you will need to create a new file with the file name .devcontainer.json.
-3. Open this file and insert the following snippet of code: 
+2. Go to the extensions tab of VSCode, this tab looks like a square with one piece leaving.
+3. Search for and install the Dev Containers VSCode extension.
+4. Now create a .devcontainer directory in the root of your project.
+5. Inside this .devcontainer directory you will need to create a new file with the file name:
+``` 
+devcontainer.json
+``` 
+6. Open this file and insert the following snippet of code: 
 ``` py title="Insert into .devcontainer.json"
 {
     "name": "Rust Development Environment",
@@ -101,23 +104,23 @@ Congrats! You just created your Rust project directory, initialized Git, and con
     }
 }
 ```
-    This configures our development container to pull the latest Rust base image from Microsoft. Essentially, this allows us to run the Rust language while in the container without having to install any software onto our local machine! The Rust software instead will exist inside our container thanks to pulling the base Rust image. This configuration also automatically downloads the VSCode rust-analyzer extension in our container. This extension will help improve program writing in Rust!
+    Let's discuss this configuration:
+    * **name:** Gives a descriptive name to your current development container.
+    * **image:** This configures our development container to pull the latest Rust base image from Microsoft for Docker to use to create our environment. Essentially, this allows us to run the Rust language while in the container without having to install any software onto our local machine! The Rust software instead will exist inside our container thanks to pulling the base Rust image. 
+    * **customizations:** Adds useful configurations to VSCode, in this scenario it will download the rust-analyzer extension. Adding the extensions into the automatic configuration file for our development container ensures that other engineers working on your project will not be missing any necessary extensions. 
 
-4. Before we continue, you should check your version of Rust by running the following command in the VSCode terminal: 
+7. Now, open the command pallette. macOS shortcut: command + shift + p. Windows shortcut: ctrl + shift + p.
+8. In the command pallette enter >Dev Containers: Reopen in Container.
+9. This will build your development container! You will know you are connected to you container when you see a blue rectangle in the bottom corner of your screen that says "Dev Container: Rust Development Environment".
+10. Before we continue, you should check your version of Rust by running the following command in the VSCode terminal: 
 ```
 rustc --version
 ```
-    You should see version v0.4.9
-
-5. Go to the extensions tab of VSCode, this tab looks like a square with one piece leaving.
-6. Search for and install the Dev Containers VSCode extension.
-7. Now, open the command pallette. macOS shortcut: command + shift + p. Windows shortcut: ctrl + shift + p.
-8. In the command pallette enter >Dev Containers: Open Dev Container.
-9. This will build your development container! You will know you are connected to you container when you see this in the bottom left corner of your screen:
-
-    **Note** When closing your and reopening your project you will need to reopen your dev container. You can do this by opening the command pallette again and running >Dev Containers: Reopen in Container.
+    You should see version 1.83.0
 
 Congrats! You have now successfully set up your Rust development container!
+
+**Note:** When closing and reopening your project you will need to reopen your dev container. You can do this by opening the command pallette again and running >Dev Containers: Reopen in Container.
 
 
 
@@ -128,23 +131,24 @@ Time to write a Rust program! In good tradition we will be writing a "Hello Worl
 1. Make sure that you are inside your hello-comp423 direcotry in VSCode and that the dev container is running.
 2. Open a terminal inside VSCode and run the following command:
 ```
-cargo new hellocomp
+cargo new hellocomp --vcs none
 ```
-    *What does this command do?* This command will creat a new Rust project named "hellocomp"!
+    *What does this command do?* This command will create a new Rust project named "hellocomp"! The --vcs none flag will make sure that the cargo new command does not create a new git repository.
 
 1. Navigate to the src/main.rs file in your project directory. 
-2. Edit the default "Hello World" statement to say "Hello COMP423".
-3. Now open a terminal in your VSCode window and run the following command to compile your project:
+2. Edit the default "Hello, World!" statement to say "Hello COMP423" and save the file.
+3. Now return to the terminal in your VSCode window and run the following commands to compile your project:
 ```
+cd hellocomp
 cargo build
 ```
-    *What does this command do?* This command compiles our project similar to running gcc in C! When a program is compiled it is translated from the high-level language we know, Rust, to a machine-readable binary file that can be executed by the compiler.
+    *What does these commands do?* The first command enters the hellocomp Rust project we created in the previous cargo command. We must enter this project directory for the terminal to have access to the necessary files to execute the program. The second command compiles our project similar to running gcc in C! When a program is compiled it is translated from the high-level language we know, Rust, to a machine-readable binary file that can be executed by the compiler.
 4. Lastly, run the following command to run your program:
 ```
 cargo run
 ```
-    *What does this command do?* This command causes the compiler to execute the binary file created by running the cargo build command.
-5. If you switch your view from terminal to output you should see Hello COMP423!  
+    *What does this command do?* This command causes the compiler to execute the binary file created when running the cargo build command. This is different from cargo build as cargo run actually executes the binary file while the cargo build command just compiles the binary file.
+5. In the terminal after the cargo run command you should see "Hello COMP423" output! 
 
 Congrats! You have successfully set up a development container from scratch and created your very first Rust project!
 
