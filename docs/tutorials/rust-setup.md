@@ -7,6 +7,8 @@
 
 In this tutorial you will be introduced to the programming language, Rust. We will go over how to install Rust, set up a development container from scratch, and then create your very first Rust project!
 
+## **Tutorial Prerequisites**
+
 To complete this tutorial you will need a few prerequisites:
 
 1. **A GitHub account**: [Github](https://github.com)
@@ -14,39 +16,17 @@ To complete this tutorial you will need a few prerequisites:
 3. **Git command-line tool installed**: [Install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 4. **Docker installed**: [Install Docker](https://www.docker.com/products/docker-desktop/)
 
-## **Getting Started with Rust**
-
-Before we create our development container and our first Rust project, we need to install Rust! 
-To do this we will use the Rust installer and version management tool called RustUp. 
-
-### Install for macOS, Linux, & other unix-like operating systems:
-
-Open a terminal or command prompt on your local machine and run the following snippet of code:
-
-``` py title="Run the RustUp installer"
-
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-```
-
-### Install for windows and other systems:
-
-Visit [this link](https://forge.rust-lang.org/infra/other-installation-methods.html) and download the correct installation package for your system 
-
-### Tips and tricks for navigating this Rust tutorial
-
 **Hot Tip** Create a folder in your file system to hold your Rust projects! Give this folder an important name that you will be able to remember later on to make finding your Rust projects easier. 
-
-Installation with RustUp comes with a tool called **Cargo**. This command-line tool is used to build Rust projects and manage packages. We will become familiar with the capabilities of this tool in the next few steps!
 
 
 ## **Creating a Directory for our Project and Initializing Git!**
 
 In these next few steps we will create our Rust project directory, initialize Git, and connect our local repository to a remote repository in GitHub!
 
-### Creating our project directory and initialize Git 
+### Creating our project directory and initializing Git 
 1. Open your terminal or command prompt and run the following commands:
 ``` 
-cargo new hello-comp423 --vcs none
+mkdir hello-comp423
 cd hello-comp423
 ```
 *What do these commands do?* The first command creates a new Rust project directory and disables automatic repository initialization. The second command enters the directory we just made.
@@ -81,14 +61,27 @@ git remote add origin https://github.com/<your-username>/comp423-course-notes.gi
 
 ### Linking your local repository to the remote
 
-1. 
-2. 
-3. 
-4. 
+1. Return to your terminal which has your project directory opened.
+2. Run the following command to add the GitHub repository as a remote:
+``` 
+git remote add origin https://github.com/<your-username>/comp423-course-notes.git
+```
+3. Run the command below
+``` 
+git branch
+```
+If the branch is not named main, run the command below:
+``` 
+git branch -M main
+```
+4. Push your local commits to the GitHub remote repository using the following commands:
+``` 
+git push --set-upstream origin main
+``` 
+5. Visit your remmote repository in Github and refresh the screen. You should now see that the commit made in step 3 of "Creating our project directory and initializing Git" is in your remote repository!
  
 
-
-Congrats! You just set up and initialized your directory in GitHub!
+Congrats! You just created your Rust project directory, initialized Git, and connect the local repository to the remote repository in GitHub!
 
 
 ## **Creating a Development Container for our Project**
@@ -108,18 +101,20 @@ Congrats! You just set up and initialized your directory in GitHub!
     }
 }
 ```
-    Explanation of the configuration here.......
+    This configures our development container to pull the latest Rust base image from Microsoft. Essentially, this allows us to run the Rust language while in the container without having to install any software onto our local machine! The Rust software instead will exist inside our container thanks to pulling the base Rust image. This configuration also automatically downloads the VSCode rust-analyzer extension in our container. This extension will help improve program writing in Rust!
 
-4. Before we continue, we should check our version of Rust by running the following command in the VSCode terminal: 
+4. Before we continue, you should check your version of Rust by running the following command in the VSCode terminal: 
 ```
 rustc --version
 ```
+    You should see version v0.4.9
 
 5. Go to the extensions tab of VSCode, this tab looks like a square with one piece leaving.
 6. Search for and install the Dev Containers VSCode extension.
-7. Open the command pallette. macOS shortcut: command + shift + p. Windows shortcut: ctrl + shift + p.
+7. Now, open the command pallette. macOS shortcut: command + shift + p. Windows shortcut: ctrl + shift + p.
 8. In the command pallette enter >Dev Containers: Open Dev Container.
 9. This will build your development container! You will know you are connected to you container when you see this in the bottom left corner of your screen:
+
     **Note** When closing your and reopening your project you will need to reopen your dev container. You can do this by opening the command pallette again and running >Dev Containers: Reopen in Container.
 
 Congrats! You have now successfully set up your Rust development container!
@@ -130,39 +125,54 @@ Congrats! You have now successfully set up your Rust development container!
 
 Time to write a Rust program! In good tradition we will be writing a "Hello World" inspired program. 
 
+1. Make sure that you are inside your hello-comp423 direcotry in VSCode and that the dev container is running.
+2. Open a terminal inside VSCode and run the following command:
+```
+cargo new hellocomp
+```
+    *What does this command do?* This command will creat a new Rust project named "hellocomp"!
+
 1. Navigate to the src/main.rs file in your project directory. 
-2. Edit the "Hello World" statement to say "Hello COMP423".
+2. Edit the default "Hello World" statement to say "Hello COMP423".
 3. Now open a terminal in your VSCode window and run the following command to compile your project:
 ```
 cargo build
 ```
-    *What does this command do?* This command compiles our project similar to running gcc in C! 
+    *What does this command do?* This command compiles our project similar to running gcc in C! When a program is compiled it is translated from the high-level language we know, Rust, to a machine-readable binary file that can be executed by the compiler.
 4. Lastly, run the following command to run your program:
 ```
 cargo run
 ```
-    *What does this command do?* This command executes our program.
+    *What does this command do?* This command causes the compiler to execute the binary file created by running the cargo build command.
+5. If you switch your view from terminal to output you should see Hello COMP423!  
 
-If you switch your view from terminal to output you should see Hello COMP423. Congrats! You have successfully installed Rust, set up a development container from scratch, and created your very first Rust project!
+Congrats! You have successfully set up a development container from scratch and created your very first Rust project!
 
 
 ### Additional Information for Mastering Cargo
 
 Some more examples of ways you might use the Cargo tool can be found below. Remember to run these commands in the terminal of VSCode in your proejct directory!
 
-``` py title="Test your Rust project"
+``` py title="Execute a unit test within your Rust project"
 cargo test
 ```
 
 ``` py title="Build documentation for your Rust project"
 cargo doc
+
+```
+``` py title="See documentation for cargo commands"
+cargo help
 ```
 
+Visit [this site](https://doc.rust-lang.org/cargo/commands/index.html) for more information on helpful cargo commands to use with Rust!
 
 ## Sources 
 
  [Dev Container Setup](https://www.luisquintanilla.me/posts/setting-up-rust-dev-env-devcontainers-vscode/)
 
  [Rust Official Site for Setup](https://www.rust-lang.org/learn/get-started)
+
+ [Cargo Commands Documentation](https://doc.rust-lang.org/cargo/commands/index.html)
 
 
