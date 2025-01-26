@@ -54,12 +54,17 @@ git commit -m "Initial commit with README"
 ### Creating the remote repository in Github 
 
 A. Login to your [Github](https://github.com) Account and 
+
 B. Navigate to your repository page and click **New**.
+
 C. Fill in the details for your repository as follows: 
-    * **Repository Name:** hello-comp423
-    * **Description:** "My very first Rust project!"
-    * **Visibility:** Public
+
+* **Repository Name:** hello-comp423
+* **Description:** "My very first Rust project!"
+* **Visibility:** Public
+
 D. Do not initialize the repository with a README, .gitignore, or license.
+
 E. Click **Create Repository**
 
 
@@ -86,14 +91,18 @@ git push --set-upstream origin main
 E. Visit your remote repository in Github and refresh the screen. You should now see that the commit made in step 4 of "Creating our project directory and initializing Git" is in your remote repository!
  
 
-Congrats! You just created your Rust project directory, initialized Git, and connect the local repository to the remote repository in GitHub!
+**Congrats!** You just created your Rust project directory, initialized Git, and connect the local repository to the remote repository in GitHub!
 
 
 ## **Creating a Development Container for our Project**
 A. Open the hello-comp423 directory in VSCode.
+
 B. Go to the extensions tab of VSCode, this tab looks like a square with one piece leaving.
-C. Search for and install the Dev Containers VSCode extension.
+
+C. Search for and **install the Dev Containers VSCode extension**.
+
 D. Now create a .devcontainer directory in the root of your project.
+
 E. Inside this .devcontainer directory you will need to create a new file with the file name:
 ``` 
 devcontainer.json
@@ -117,17 +126,21 @@ F. Open this file and insert the following snippet of code:
     * **name:** Gives a descriptive name to your current development container.
     * **image:** This configures our development container to pull the latest Rust base image from Microsoft for Docker to use to create our environment. Essentially, this allows us to run the Rust language while in the container without having to install any software onto our local machine! The Rust software instead will exist inside our container thanks to pulling the base Rust image. 
     * **customizations:** Adds useful configurations to VSCode, in this scenario it will download the rust-analyzer extension. Adding the extensions into the automatic configuration file for our development container ensures that other engineers working on your project will not be missing any necessary extensions. 
+    * **extensions**: Installs any needed extensions automatically. In this case, thte official ```rust-analyzer``` VSCode plugin by the Rust Programming Language Group.
 
-G. Now, open the command pallette. macOS shortcut: command + shift + p. Windows shortcut: ctrl + shift + p.
-H. In the command pallette enter >Dev Containers: Reopen in Container. 
+G. Now, open the command pallette. macOS shortcut: ``command + shift + p``. Windows shortcut: ``ctrl + shift + p``.
+
+H. In the command pallette enter ``>Dev Containers: Reopen in Container``. 
+
 I. This will build your development container! This may take some time to load. You will know you are connected to you container when you see a blue rectangle in the bottom corner of your screen that says "Dev Container: Rust Development Environment".
+
 J. Before we continue, you should check your version of Rust by running the following command in the VSCode terminal: 
 ```
 rustc --version
 ```
     You should see version 1.83.0 or greater if a later version has been released since the writing of this tutorial.
 
-Congrats! You have now successfully set up your Rust development container!
+**Congrats!** You have now successfully set up your Rust development container!
 
 !!! tip
     When closing and reopening your project you will need to reopen your dev container. You can do this by opening the command pallette again and running >Dev Containers: Reopen in Container. Remember to give the environemnt time to load.
@@ -136,9 +149,10 @@ Congrats! You have now successfully set up your Rust development container!
 
 ## **Writing your First Rust Program!**
 
-Time to write a Rust program! In good tradition we will be writing a "Hello World" inspired program. 
+Time to write your first Rust program! In good tradition we will be writing a "Hello World" inspired program. 
 
 A. Make sure that you are inside your hello-comp423 directory in VSCode and that the dev container is running.
+
 B. Open a terminal inside VSCode and run the following command:
 ```
 cargo new hellocomp --vcs none
@@ -147,24 +161,40 @@ cargo new hellocomp --vcs none
     This command will create a new Rust project named "hellocomp"! The --vcs none flag will make sure that the cargo new command does not create a new git repository.
 
 C. Navigate to the src/main.rs file in your project directory. 
+
 D. Edit the default "Hello, World!" statement to say "Hello COMP423" and save the file.
+
 E. Now return to the terminal in your VSCode window and run the following commands to compile your project:
 ```
 cd hellocomp
 cargo build
 ```
 !!! info "What do these commands do?"
-    The first command enters the hellocomp Rust project we created in the previous cargo command. We must enter this project directory for the terminal to have access to the necessary files to execute the program. The second command compiles our project similar to running gcc in C! When a program is compiled it is translated from the high-level language we know, Rust, to a machine-readable binary file that can be executed by the compiler. The cargo build command just compiles your program, it does NOT execute the program! 
+    The first command enters the hellocomp Rust project we created in the previous cargo command. We must enter this project directory for the terminal to have access to the necessary files to execute the program. The second command, ```cargo build```, compiles our project similar to running gcc in C! When a program is compiled it is translated from the high-level language we know, Rust, to a machine-readable binary file that can be executed by the compiler. The cargo build command just compiles your program into an executable format, it does **NOT** execute the program! 
+
 F. Lastly, run the following command to run your program:
 ```
-cargo run
+cargo run 
 ```
+OR
+``` 
+cargo run main.rs
+```
+
 !!! info "What does this command do?"
-     This command causes the compiler to compile our project AND execute. This is different from cargo build as cargo run actually executes the binary file while the cargo build command just compiles the binary file. Using cargo build alone is good to use for debuggging your program, and using cargo run is good for when you are ready to execute your program!
+     This command causes the compiler to compile our project **AND** execute. This is different from ```cargo build``` as ``` cargo run``` actually executes the binary file while the cargo build command just compiles the binary file. Using ``` cargo build ``` alone is good to use for debuggging your program, and using cargo run is good for when you are ready to execute your program!
 
 G. In the terminal after the cargo run command you should see "Hello COMP423" output! 
 
-Congrats! You have successfully set up a development container from scratch and created your very first Rust project!
+H. To commit and push these changes to your GitHub repository, run the following lines of code in your terminal: 
+
+``` 
+git add . 
+git commit -m "Hello COMP423"
+git push origin main
+```
+
+**Congrats!** You have successfully set up a development container from scratch and created your very first Rust project!
 
 
 ### Additional Information for Mastering Cargo
