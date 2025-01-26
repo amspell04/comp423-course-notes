@@ -126,6 +126,7 @@ F. Open this file and insert the following snippet of code:
     * **name:** Gives a descriptive name to your current development container.
     * **image:** This configures our development container to pull the latest Rust base image from Microsoft for Docker to use to create our environment. Essentially, this allows us to run the Rust language while in the container without having to install any software onto our local machine! The Rust software instead will exist inside our container thanks to pulling the base Rust image. 
     * **customizations:** Adds useful configurations to VSCode, in this scenario it will download the rust-analyzer extension. Adding the extensions into the automatic configuration file for our development container ensures that other engineers working on your project will not be missing any necessary extensions. 
+    * **extensions**: Installs any needed extensions automatically. In this case, thte official ```rust-analyzer``` VSCode plugin by the Rust Programming Language Group.
 
 G. Now, open the command pallette. macOS shortcut: ``command + shift + p``. Windows shortcut: ``ctrl + shift + p``.
 
@@ -181,6 +182,14 @@ G. In the terminal after the cargo run command you should see "Hello COMP423" ou
 
 **Congrats!** You have successfully set up a development container from scratch and created your very first Rust project!
 
+
+H. To commit and push your changes to your github repository, run the following lines of code: 
+
+``` 
+    git add . 
+    git commit -m "Hello COMP423"
+    git push origin main
+```
 
 ### Additional Information for Mastering Cargo
 
