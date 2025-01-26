@@ -5,7 +5,7 @@
 * Reviewer: [Lindsay Bean](https://github.com/lcbean)
 
 
-In this tutorial you will be introduced to the programming language, Rust. We will go over how to install Rust, set up a development container from scratch, and then create your very first Rust project!
+In this tutorial you will be introduced to the programming language, Rust. Rust is a systems programming language that allows more control of memory management. Throughout this tutorial we will learn how to set up a development container from scratch and then create our very first Rust project!
 
 ## **Tutorial Prerequisites**
 
