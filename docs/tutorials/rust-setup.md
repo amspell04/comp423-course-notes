@@ -46,7 +46,7 @@ git init
 C. Create a README file for the project by running: 
 ``` 
 echo "# My first Rust Project" > README.md
-echo "Development container setup thanks to: (https://github.com/amspell04/comp423-course-notes)" >> README.md
+echo "Development container setup thanks to: (https://amspell04.github.io/comp423-course-notes/tutorials/rust-setup/)" >> README.md
 git add README.md
 git commit -m "Initial commit with README"
 ```
