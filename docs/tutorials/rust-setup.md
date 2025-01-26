@@ -119,18 +119,18 @@ devcontainer.json
     * **customizations:** Adds useful configurations to VSCode, in this scenario it will download the rust-analyzer extension. Adding the extensions into the automatic configuration file for our development container ensures that other engineers working on your project will not be missing any necessary extensions. 
 
 7. Now, open the command pallette. macOS shortcut: command + shift + p. Windows shortcut: ctrl + shift + p.
-8. In the command pallette enter >Dev Containers: Reopen in Container.
-9. This will build your development container! You will know you are connected to you container when you see a blue rectangle in the bottom corner of your screen that says "Dev Container: Rust Development Environment".
+8. In the command pallette enter >Dev Containers: Reopen in Container. 
+9. This will build your development container! This may take some time to load. You will know you are connected to you container when you see a blue rectangle in the bottom corner of your screen that says "Dev Container: Rust Development Environment".
 10. Before we continue, you should check your version of Rust by running the following command in the VSCode terminal: 
 ```
 rustc --version
 ```
-    You should see version 1.83.0
+    You should see version 1.83.0 or greater if a later version has been released since the writing of this tutorial.
 
 Congrats! You have now successfully set up your Rust development container!
 
-!!! note
-    When closing and reopening your project you will need to reopen your dev container. You can do this by opening the command pallette again and running >Dev Containers: Reopen in Container.
+!!! tip
+    When closing and reopening your project you will need to reopen your dev container. You can do this by opening the command pallette again and running >Dev Containers: Reopen in Container. Remember to give the environemnt time to load.
 
 
 
