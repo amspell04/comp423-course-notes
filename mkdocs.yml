@@ -13,3 +13,5 @@ theme:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+  - pymdownx.betterem
+  - pymdownx.blocks.caption
