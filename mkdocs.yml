@@ -1,8 +1,11 @@
 site_name: COMP423 Course Notes
 theme:
   name: material
+  features:
+    - content.code.copy
+    - content.code.annotate
 
-  markdown_extensions:
+markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
