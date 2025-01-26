@@ -71,11 +71,13 @@ E. Click **Create Repository**
 ### Linking your local repository to the remote
 
 A. Return to your local terminal/command prompt which has your project directory opened.
+
 B. Run the following command to add the GitHub repository as a remote:
 ``` 
 git remote add origin https://github.com/<your-username>/hello-comp423.git
 ```
     **Remember** replace "your-username" with your GitHub profile username.
+
 C. Run the command below
 ``` 
 git branch
@@ -143,7 +145,7 @@ rustc --version
 **Congrats!** You have now successfully set up your Rust development container!
 
 !!! tip
-    When closing and reopening your project you will need to reopen your dev container. You can do this by opening the command pallette again and running >Dev Containers: Reopen in Container. Remember to give the environemnt time to load.
+    When closing and reopening your project you will need to reopen your dev container. You can do this by opening the command pallette again and running ```>Dev Containers: Reopen in Container```. Remember to give the environemnt time to load.
 
 
 
@@ -158,7 +160,7 @@ B. Open a terminal inside VSCode and run the following command:
 cargo new hellocomp --vcs none
 ```
 !!! info "What does this command do?"
-    This command will create a new Rust project named "hellocomp"! The --vcs none flag will make sure that the cargo new command does not create a new git repository.
+    This command will create a new Rust project named "hellocomp"! The ```--vcs none``` flag will make sure that the cargo new command does not create a new git repository.
 
 C. Navigate to the src/main.rs file in your project directory. 
 
@@ -170,7 +172,7 @@ cd hellocomp
 cargo build
 ```
 !!! info "What do these commands do?"
-    The first command enters the hellocomp Rust project we created in the previous cargo command. We must enter this project directory for the terminal to have access to the necessary files to execute the program. The second command, ```cargo build```, compiles our project similar to running gcc in C! When a program is compiled it is translated from the high-level language we know, Rust, to a machine-readable binary file that can be executed by the compiler. The cargo build command just compiles your program into an executable format, it does **NOT** execute the program! 
+    The first command enters the hellocomp Rust project we created in the previous cargo command. We must enter this project directory for the terminal to have access to the necessary files to execute the program. The second command, ```cargo build```, compiles our project similar to running gcc in C! When a program is compiled it is translated from the high-level language we know, Rust, to a machine-readable binary file that can be executed by the compiler. The ```cargo build``` command just compiles your program into an executable format, it does **NOT** execute the program! 
 
 F. Lastly, run the following command to run your program:
 ```
@@ -182,9 +184,9 @@ cargo run main.rs
 ```
 
 !!! info "What does this command do?"
-     This command causes the compiler to compile our project **AND** execute. This is different from ```cargo build``` as ``` cargo run``` actually executes the binary file while the cargo build command just compiles the binary file. Using ``` cargo build ``` alone is good to use for debuggging your program, and using cargo run is good for when you are ready to execute your program!
+     This command causes the compiler to compile our project **AND** execute. This is different from ```cargo build``` as ``` cargo run``` actually executes the binary file while the ```cargo build``` command just compiles the binary file. Using ``` cargo build ``` alone is good to use for debuggging your program, and using ```cargo run``` is good for when you are ready to execute your program!
 
-G. In the terminal after the cargo run command you should see "Hello COMP423" output! 
+G. In the terminal after the ```cargo run``` command you should see "Hello COMP423" output! 
 
 H. To commit and push these changes to your GitHub repository, run the following lines of code in your terminal: 
 
