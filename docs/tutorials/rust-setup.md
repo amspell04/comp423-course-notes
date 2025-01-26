@@ -186,16 +186,16 @@ cargo run main.rs
 
 G. In the terminal after the cargo run command you should see "Hello COMP423" output! 
 
-**Congrats!** You have successfully set up a development container from scratch and created your very first Rust project!
-
-
-H. To commit and push your changes to your github repository, run the following lines of code: 
+H. To commit and push these changes to your GitHub repository, run the following lines of code in your terminal: 
 
 ``` 
-    git add . 
-    git commit -m "Hello COMP423"
-    git push origin main
+git add . 
+git commit -m "Hello COMP423"
+git push origin main
 ```
+
+**Congrats!** You have successfully set up a development container from scratch and created your very first Rust project!
+
 
 ### Additional Information for Mastering Cargo
 
